@@ -1,0 +1,17 @@
+.buttonStyle {
+    background-color: #ffd700;
+    /* gold */
+    color: #000;
+    /* black text */
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.productTitle {
+    font-size: 20px;
+    color: rgb(109, 12, 12);
+}
