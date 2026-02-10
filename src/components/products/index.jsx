@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ProductItem from "./components/product-items.jsx"
 import "./style.css"
 
@@ -8,9 +8,29 @@ function ProductList({ DummyProducts, name, city }) {
 
     const [flag, setFlag] = useState(initialState)
 
+    const [count, setCount] = useState(0)
+
+    const [changeStyle, setChangeStyle] = useState(false)
+
     function handleToggleClick() {
         setFlag(!flag)
     }
+
+    function handleIncreaseCount() {
+        setCount(count + 1)
+    }
+
+    // useEffect(() => {
+    //     console.log("This will only run once.");
+    // }, [])
+
+    useEffect(() => {
+        if (count === 10) {
+            setChangeStyle(true)
+        }
+    }, [count])
+
+    console.log(changeStyle);
 
     return (
         <div>
@@ -28,6 +48,11 @@ function ProductList({ DummyProducts, name, city }) {
             {
                 flag ? <h4>{name} aand {city}</h4> : <h4>Hello</h4>
             }
+
+            <div>
+                <button style={{ backgroundColor: changeStyle ? "black" : "white", color: changeStyle ? "red" : "bue" }} onClick={handleIncreaseCount}>Increase the count</button>
+                <p>count is {count}</p>
+            </div>
             <ul>
                 {
                     DummyProducts.map((item, index) => (
